@@ -1,0 +1,30 @@
+@(title: String, scoreForm: Form[IngresscoreEntity], id: Long)
+
+@import helper._
+
+@main("Avelon -> " + title, null) {
+	
+	@if(id == 0) {
+ 		<h2>Add an agent...</h2>
+		@form(routes.IngresscoreController.createIngresscore()) {
+			@inputText(scoreForm("agent"))
+			@inputText(scoreForm("score"))
+			@inputText(scoreForm("silver"))
+			@inputText(scoreForm("gold"))
+			@inputText(scoreForm("platinum"))
+			@inputText(scoreForm("black"))
+			<input style="background-color: green; float: none" type="submit" value="Create">   
+		}
+	} else {
+	 	<h2>Update...</h2>
+		@form(routes.IngresscoreController.updateIngresscore(id)) {
+			@inputText(scoreForm("agent"))
+			@inputText(scoreForm("score"))
+			@inputText(scoreForm("silver"))
+			@inputText(scoreForm("gold"))
+			@inputText(scoreForm("platinum"))
+			@inputText(scoreForm("black"))
+			<input style="background-color: green; float: none" type="submit" value="Update @id"> 
+		}  	
+	}
+ }

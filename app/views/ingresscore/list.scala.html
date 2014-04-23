@@ -1,0 +1,27 @@
+@(title: String, scores: List[IngresscoreEntity], message: String)
+
+@import helper._
+
+@main("Ingresscore -> " + title, message) {
+	
+	@form(routes.IngresscoreController.newIngresscore()) {
+		<input style="background-color: green;" type="submit" value="New Stock">
+	}
+
+	<h2>List of stocks (total @scores.size() stocks)</h2>
+	@for(score <- scores) {
+		<li>@score.agent (@score.score)
+
+			@form(routes.IngresscoreController.showIngresscore(stock.id)) {
+				<input style="background-color: green; float: right" type="submit" value="Show @score.id">
+			}
+			@form(routes.IngresscoreController.editIngresscore(stock.id)) {
+				<input style="background-color: yellow; float: right" type="submit" value="Edit @score.id">
+			}
+			@form(routes.IngresscoreController.deleteIngresscore(stock.id)) {
+				<input style="background-color: red; float: right" type="submit" value="Delete @score.id">
+			}
+			<p style="float: none"/>
+		</li>
+	}    
+}
