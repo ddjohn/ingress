@@ -7,3 +7,12 @@ GET     /                           controllers.Application.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+# Stocks
+GET     /ingresscore                  	controllers.IngresscoreController.listIngresscores()
+POST    /ingresscore                  	controllers.IngresscoreController.createIngresscore()
+GET		/ingresscore/new				controllers.IngresscoreController.newIngresscore()
+GET		/ingresscore/:id				controllers.IngresscoreController.showIngresscore(id: Long)
+GET		/ingresscore/:id/edit		  	controllers.IngresscoreController.editIngresscore(id: Long)
+POST	/ingresscore/:id/update       	controllers.IngresscoreController.updateIngresscore(id: Long)
+POST    /ingresscore/:id/delete       	controllers.IngresscoreController.deleteIngresscore(id: Long)
