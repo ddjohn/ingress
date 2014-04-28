@@ -68,7 +68,7 @@ public class IngresscoreEntity extends Model {
 			else if(silver >= 7 && gold >= 4                                && score >=  7500000) {return 11;}
 			else if(silver >= 6 && gold >= 3                                && score >=  5000000) {return 10;}
 			else if(silver >= 4 && gold >= 1                                && score >=  2500000) {return  9;}
-			else {return 0;}
+			else {return 8;}
 		}
 	}
 
