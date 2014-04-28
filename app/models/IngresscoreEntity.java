@@ -17,34 +17,63 @@ public class IngresscoreEntity extends Model {
 	public String agent;
 
 	@Required
+	public String color;
+
+	public Integer level;
+
+	@Required
 	public Long score;
 
 	@Required
-	public Long silver;
+	public Integer silver;
 
 	@Required
-	public Long gold;
+	public Integer gold;
 
 	@Required
-	public Long platinum;
+	public Integer platinum;
 
 	@Required
-	public Long black;
+	public Integer black;
 
 	public static Finder<Long, IngresscoreEntity> find = new Finder<Long, IngresscoreEntity>(Long.class, IngresscoreEntity.class);
 
-	public IngresscoreEntity(String agent, Long score, Long silver, Long gold, Long platinum, Long black) {
+	public IngresscoreEntity(String agent, String color, Long score, Integer silver, Integer gold, Integer platinum, Integer black) {
 		this.agent    = agent;
 		this.score    = score;
+		this.color    = color;
 		this.silver   = silver;
 		this.gold     = gold;
 		this.platinum = platinum;
 		this.black    = black;
+		this.level    = this.calculateLevel(score, silver, gold, platinum, black);
+	}
+
+	private Integer calculateLevel(Long score, Integer silver, Integer gold, Integer platinum, Integer black) {
+	         if(score <       0) {return 0;}
+	    else if(score <   10000) {return 1;}
+		else if(score <   30000) {return 2;}
+		else if(score <   70000) {return 3;}
+		else if(score <  150000) {return 4;}
+		else if(score <  300000) {return 5;}
+		else if(score <  600000) {return 6;}
+		else if(score < 1200000) {return 7;}
+		else if(score < 2400000) {return 8;}
+		else {
+			     if(                            platinum >= 5 && black >= 1) {return 16;}
+			else if(                            platinum >= 4              ) {return 15;}
+			else if(                            platinum >= 3              ) {return 14;}
+			else if(               gold >= 7 && platinum >= 2              ) {return 13;}
+			else if(silver >= 8 && gold >= 6                               ) {return 12;}
+			else if(silver >= 7 && gold >= 4                               ) {return 11;}
+			else if(silver >= 6 && gold >= 3                               ) {return 10;}
+			else if(silver >= 4 && gold >= 1                               ) {return  9;}
+			else {return 0;}
+		}
 	}
 
 	public static List<IngresscoreEntity> all() {
-		//return find.where().orderBy("market,fullname asc").findList();
-		return find.all();
+		return find.where().orderBy("level,score desc").findList();
 	}
 
 	public static void create(IngresscoreEntity stock) {

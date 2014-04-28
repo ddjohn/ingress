@@ -5,23 +5,62 @@
 @main("Ingresscore -> " + title, message) {
 	
 	@form(routes.IngresscoreController.newIngresscore()) {
-		<input style="background-color: green;" type="submit" value="New Stock">
+		<input style="background-color: lightgreen;" type="submit" value="Add new agent...">
 	}
 
-	<h2>List of stocks (total @scores.size() stocks)</h2>
+	<h2>List of agents (total @scores.size() agent(s))</h2>
+	<table border="1">
+		<tr>
+			<th>Agent</th>
+			<th>Your Level</th>
+			<th>Points</th>
+			<th>Silver</th>
+			<th>Gold</th>
+			<th>Platimum</th>
+			<th>Black</th>
+			<th>Actions</th>
+		</tr>
 	@for(score <- scores) {
-		<li>@score.agent (@score.score)
-
+		<tr>
+			<td>@score.agent</td>
+			<td align="center"><b>@score.level</b></td>
+			<td width="@(20000000 / 80000)">
+				<table border="0">
+					<tr><td width="@(score.score / 80000)" bgcolor="@score.color" align="right">&nbsp;</td><td><small>@score.score</small></td></tr>
+				</table> 
+			</td>
+			<td>
+			@for(a <- 1 until score.silver) {
+         			<b><font color="silver">(Ag)</font></b>
+      		}
+      		</td>
+			<td>
+			@for(a <- 1 until score.gold) {
+         			<b><font color="gold">(Au)</font></b>
+      		}
+      		</td>
+			<td>
+			@for(a <- 1 until score.platinum) {
+         			<b><font clor="platinum">(Pl)</font></b>
+      		}
+      		</td>
+			<td>
+			@for(a <- 1 until score.black) {
+         			<b><font color="black">(Bl)</font></b>
+      		}
+      		</td>
+			<td>
 			@form(routes.IngresscoreController.showIngresscore(score.id)) {
-				<input style="background-color: green; float: right" type="submit" value="Show @score.id">
+				<input style="background-color: lightgreen;" type="submit" value="Show">
 			}
 			@form(routes.IngresscoreController.editIngresscore(score.id)) {
-				<input style="background-color: yellow; float: right" type="submit" value="Edit @score.id">
+				<input style="background-color: khaki;" type="submit" value="Edit">
 			}
 			@form(routes.IngresscoreController.deleteIngresscore(score.id)) {
-				<input style="background-color: red; float: right" type="submit" value="Delete @score.id">
+				<input style="background-color: salmon;" type="submit" value="Delete">
 			}
-			<p style="float: none"/>
-		</li>
+			</td>
+		</tr>
 	}    
+	</table>	
 }

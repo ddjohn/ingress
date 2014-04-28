@@ -1,0 +1,68 @@
+body {
+	font-family: Verdana;
+	font-size: 12px;
+	background: #ccc;
+}
+
+a {
+	text-decoration: none;
+	color: #0088cc;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+p {
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+#main {
+	background: #fff;
+	width: 980px;
+	
+	margin-top: 30px;
+	margin-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#logo {
+	margin-top: 20px;
+	background: url("/assets/images/logo.png") top left no-repeat;
+	background-size: 980px 200px;
+	padding-top: 220px;
+}
+
+#container {
+	width: 940px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#footer{
+	text-align: center;
+}
+
+#links {
+	margin-left: 20px;	
+	margin-right: 20px;	
+	width: 120px;
+	padding-bottom: 660px;
+	float: left;
+}
+
+#content {
+	padding-bottom: 660px;
+}
+
+#scores {
+	margin-left: 20px;	
+	margin-right: 20px;	
+	width: 180px;
+	padding-bottom: 660px;
+	float: right;
+}

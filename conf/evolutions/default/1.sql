@@ -6,11 +6,13 @@
 create table Ingresscore (
   id                        bigint not null,
   agent                     varchar(255),
+  color                     varchar(255),
+  level                     integer,
   score                     bigint,
-  silver                    bigint,
-  gold                      bigint,
-  platinum                  bigint,
-  black                     bigint,
+  silver                    integer,
+  gold                      integer,
+  platinum                  integer,
+  black                     integer,
   constraint pk_Ingresscore primary key (id))
 ;
 

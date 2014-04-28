@@ -5,21 +5,26 @@
 @main("Avelon -> " + title, null) {
 	<h2>Show stock @score.id</h2>
 	<ul>
-		<li>Label      : @score.agent</li>
-		<li>Name       : @score.score</li>
-		<li>Description: @score.silver</li>
-		<li>Description: @score.gold</li>
+		<li>Label    : @score.agent</li>
+		<li>Name     : @score.score</li>
+		<li>Level    : @score.level</li>
+		<li>Color    : @score.color</li>
+		<li>Score    : @score.score</li>
+		<li>Silver   : @score.silver</li>
+		<li>Gold     : @score.gold</li>
+		<li>Platinum : @score.platinum</li>
+		<li>Black    : @score.black</li>
 	</ul>
 	
 	@form(routes.IngresscoreController.editIngresscore(score.id)) {
-		<input style="background-color: yellow; float: left" type="submit" value="Edit @score.id">
+		<input style="background-color: khaki; float: left" type="submit" value="Edit">
 	}
 	
 	@form(routes.IngresscoreController.deleteIngresscore(score.id)) {
-		<input style="background-color: red; float: left" type="submit" value="Delete @score.id">
+		<input style="background-color: salmon; float: left" type="submit" value="Delete">
 	}
 
 	@form(routes.IngresscoreController.listIngresscores()) {
-		<input style="background-color: green; float: left" type="submit" value="List All">
+		<input style="background-color: lightgreen; float: left" type="submit" value="List All">
 	}
  }

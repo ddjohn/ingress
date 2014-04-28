@@ -2,6 +2,45 @@
 
 <!DOCTYPE html>
 
+@footer = {
+	Powered by <a href="http://www.playframework.com/">Play Framework</a> - <a href="http://www.heroku.com/">Heroku</a> - <a href="http://www.postgresql.org/">PostgreSQL</a> - <a href="https://github.com/">GitHub!</a> - <a href="http://jquery.com/">JQuery</a>
+}
+
+@scores = {
+	<p><b>Levels</b></p>
+	<p>Level 1</p><p>0</p>
+	<p>Level 2</p><p>10,000</p>        				
+	<p>Level 3</p><p>30,000</p>
+	<p>Level 4</p><p>70,000</p>				
+	<p>Level 5</p><p>150,000</p>	
+	<p>Level 6</p><p>300,000</p>
+	<p>Level 7</p><p>600,000</p>
+	<p>Level 8</p><p>1,200,000</p>
+	<p>Level 9</p><p>2,500,000  4x(Ag)  1x(Au)</p>
+	<p>Level 10</p><p>5,000,000  6x(Ag)  3x(Au)</p>
+	<p>Level 11</p><p>7,500,000  7x(Ag)  4x(Au)</p>
+	<p>Level 12</p><p>10,000,000  8x(Ag)  6x(Au)</p>
+	<p>Level 13</p><p>15,000,000 7x(Au)  2x(Pl)</p>
+	<p>Level 14</p><p>20,000,000  3x(Pl)</p>
+	<p>Level 15</p><p>30,000,000  4x(Pl)</p>
+	<p>Level 16</p><p>50,000,000 5x(Pl)  1x(Bl)</p>
+	<p>&nbsp;</p>
+	<p><b>Legend</b></p>
+	<p>Ag - silver</p>
+	<p>Au - gold</p>
+	<p>Pl - platinum</p>
+	<p>Bl - black</p>
+}
+
+@links = {
+	<p><b>Links</b></p>
+	<a href="http://www.ingress.com/intel">Intel</a>
+	<p>&nbsp;</p>
+	<p><b>Green</b></p>
+	<p>&nbsp;</p>
+	<p><b>Blue</b></p>
+}
+
 <html>
     <head>
         <title>@title</title>
@@ -10,42 +49,31 @@
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </head>
     <body>
-   		<center>
-    		<table border="2">
-    			<tr height="600"><td width="800" valign="top">
-    				<table border="1">
-    					<tr><td valign="top">
-    					<p>Links:</p>
-    					<a href="http://www.ingress.com/intel">Intel</a>
-    					<p>Green:</p>
-    					<p>Blue:</p>
-    					</td>
-    					<td valign="top" width="100%">
-        					@content
-        				</td><td valign="top" width="150">
-        				<p>Level 1</p><p>0</p>
-        				<p>Level 2</p><p>10,000</p>        				
-        				<p>Level 3</p><p>30,000</p>
-        				<p>Level 4</p><p>70,000</p>				
-        				<p>Level 5</p><p>150,000</p>	
-        				<p>Level 6</p><p>300,000</p>
-        				<p>Level 7</p><p>600,000</p>
-        				<p>Level 8</p><p>1,200,000</p>
-        				<p>Level 9</p><p>2,500,000  4x(Ag)  1x(Au)</p>
-        				<p>Level 10</p><p>5,000,000  6x(Ag)  3x(Au)</p>
-        				<p>Level 11</p><p>7,500,000  7x(Ag)  4x(Au)</p>
-        				<p>Level 12</p><p>10,000,000  8x(Ag)  6x(Au)</p>
-        				<p>Level 13</p><p>15,000,000 7x(Au)  2x(Pl)</p>
-        				<p>Level 14</p><p>20,000,000  3x(Pl)</p>
-        			    <p>Level 15</p><p>30,000,000  4x(Pl)</p>
-        			    <p>Level 16</p><p>50,000,000 5x(Pl)  1x(Bl)</p>
-        				</td></tr>
-        			<tr><td colspan="3">Powered  by
-        			<a href="">Play Framework</a> - <a href="">Heroku</a>
-        			</td></tr>
-        			</table>
-        		</td></tr>
-        	</table>
-        	</center>
+    	<div id="main">
+            <div id="header">
+                <div id="container">
+                    <h1><a class="brand" href="#">Ingresscore</a></h1>
+                </div>
+        	<div>
+            <div id="logo"></div>
+        	<div id="page">
+	        	<div id="Container">
+	        		<div id="links">
+    	    			@links
+					</div>
+	        		<div id="scores">
+    	    			@scores
+        			</div>
+	        		<div id="content">
+    	    			@content
+					</div>
+        		</div>
+        	</div>
+      		<div id="footer">
+	            <div id="container">
+ 					<small>@footer</small>
+                </div>
+        	</div>
+        </div>
     </body>
 </html>

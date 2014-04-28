@@ -1,30 +1,31 @@
 @(title: String, scoreForm: Form[IngresscoreEntity], id: Long)
 
 @import helper._
+@import scala.collection.JavaConversions._
+
+@commonFields = {
+	@inputText(scoreForm("agent"))
+	@inputText(scoreForm("score"))
+	@select(scoreForm("color"), options(Seq("blue", "green")))
+	@select(scoreForm("silver"), options(Seq("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")))
+	@select(scoreForm("gold"), options(Seq("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")))
+	@select(scoreForm("platinum"), options(Seq("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")))
+	@select(scoreForm("black"), options(Seq("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")))
+}
 
 @main("Avelon -> " + title, null) {
 	
 	@if(id == 0) {
  		<h2>Add an agent...</h2>
 		@form(routes.IngresscoreController.createIngresscore()) {
-			@inputText(scoreForm("agent"))
-			@inputText(scoreForm("score"))
-			@inputText(scoreForm("silver"))
-			@inputText(scoreForm("gold"))
-			@inputText(scoreForm("platinum"))
-			@inputText(scoreForm("black"))
-			<input style="background-color: green; float: none" type="submit" value="Create">   
+			@commonFields
+			<input style="background-color: lightgreen; float: none" type="submit" value="Create">   
 		}
 	} else {
 	 	<h2>Update...</h2>
 		@form(routes.IngresscoreController.updateIngresscore(id)) {
-			@inputText(scoreForm("agent"))
-			@inputText(scoreForm("score"))
-			@inputText(scoreForm("silver"))
-			@inputText(scoreForm("gold"))
-			@inputText(scoreForm("platinum"))
-			@inputText(scoreForm("black"))
-			<input style="background-color: green; float: none" type="submit" value="Update @id"> 
-		}  	
+			@commonFields
+			<input style="background-color: lightgreen; float: none" type="submit" value="Update"> 
+		}
 	}
- }
+}
