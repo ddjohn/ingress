@@ -42,11 +42,11 @@ public class IngresscoreEntity extends Model {
 		this.agent    = agent;
 		this.score    = score;
 		this.color    = color;
+		this.level    = this.calculateLevel(score, silver, gold, platinum, black);
 		this.silver   = silver;
 		this.gold     = gold;
 		this.platinum = platinum;
 		this.black    = black;
-		this.level    = this.calculateLevel(score, silver, gold, platinum, black);
 	}
 
 	private Integer calculateLevel(Long score, Integer silver, Integer gold, Integer platinum, Integer black) {
@@ -58,16 +58,16 @@ public class IngresscoreEntity extends Model {
 		else if(score <  300000) {return 5;}
 		else if(score <  600000) {return 6;}
 		else if(score < 1200000) {return 7;}
-		else if(score < 2400000) {return 8;}
+		else if(score < 2500000) {return 8;}
 		else {
-			     if(                            platinum >= 5 && black >= 1) {return 16;}
-			else if(                            platinum >= 4              ) {return 15;}
-			else if(                            platinum >= 3              ) {return 14;}
-			else if(               gold >= 7 && platinum >= 2              ) {return 13;}
-			else if(silver >= 8 && gold >= 6                               ) {return 12;}
-			else if(silver >= 7 && gold >= 4                               ) {return 11;}
-			else if(silver >= 6 && gold >= 3                               ) {return 10;}
-			else if(silver >= 4 && gold >= 1                               ) {return  9;}
+			     if(                            platinum >= 5 && black >= 1 && score >= 50000000) {return 16;}
+			else if(                            platinum >= 4               && score >= 30000000) {return 15;}
+			else if(                            platinum >= 3               && score >= 20000000) {return 14;}
+			else if(               gold >= 7 && platinum >= 2               && score >= 15000000) {return 13;}
+			else if(silver >= 8 && gold >= 6                                && score >= 10000000) {return 12;}
+			else if(silver >= 7 && gold >= 4                                && score >=  7500000) {return 11;}
+			else if(silver >= 6 && gold >= 3                                && score >=  5000000) {return 10;}
+			else if(silver >= 4 && gold >= 1                                && score >=  2500000) {return  9;}
 			else {return 0;}
 		}
 	}
@@ -76,8 +76,9 @@ public class IngresscoreEntity extends Model {
 		return find.where().orderBy("level,score desc").findList();
 	}
 
-	public static void create(IngresscoreEntity stock) {
-		stock.save();
+	public static void create(IngresscoreEntity entity) {
+		entity.level = entity.calculateLevel(entity.score, entity.silver, entity.gold, entity.platinum, entity.black);
+		entity.save();
 	}
 
 	public static void delete(Long id) {
@@ -85,11 +86,13 @@ public class IngresscoreEntity extends Model {
 	}
 
 	public static IngresscoreEntity get(Long id) {
-		return find.ref(id);	}
+		return find.ref(id);
+	}
 
-	public static void update(Long id, IngresscoreEntity stock) {
-		stock.id = id;
-		stock.update();		
+	public static void update(Long id, IngresscoreEntity entity) {
+		entity.id = id;
+		entity.level = entity.calculateLevel(entity.score, entity.silver, entity.gold, entity.platinum, entity.black);
+		entity.update();
 	}
 
 	public static void deleteAll() {

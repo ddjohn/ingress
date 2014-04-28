@@ -16,7 +16,7 @@
 			<th>Points</th>
 			<th>Silver</th>
 			<th>Gold</th>
-			<th>Platimum</th>
+			<th>Platin.</th>
 			<th>Black</th>
 			<th>Actions</th>
 		</tr>
@@ -29,27 +29,27 @@
 					<tr><td width="@(score.score / 80000)" bgcolor="@score.color" align="right">&nbsp;</td><td><small>@score.score</small></td></tr>
 				</table> 
 			</td>
-			<td>
-			@for(a <- 1 until score.silver) {
+			<td align="center">
+			@for(a <- 0 until score.silver) {
          			<b><font color="silver">(Ag)</font></b>
       		}
       		</td>
-			<td>
-			@for(a <- 1 until score.gold) {
+			<td align="center">
+			@for(a <- 0 until score.gold) {
          			<b><font color="gold">(Au)</font></b>
       		}
       		</td>
-			<td>
-			@for(a <- 1 until score.platinum) {
-         			<b><font clor="platinum">(Pl)</font></b>
+			<td align="center">
+			@for(a <- 0 until score.platinum) {
+         			<b><font color="brown">(Pl)</font></b>
       		}
       		</td>
-			<td>
-			@for(a <- 1 until score.black) {
+			<td align="center">
+			@for(a <- 0 until score.black) {
          			<b><font color="black">(Bl)</font></b>
       		}
       		</td>
-			<td>
+			<td align="center">
 			@form(routes.IngresscoreController.showIngresscore(score.id)) {
 				<input style="background-color: lightgreen;" type="submit" value="Show">
 			}
